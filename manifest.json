@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.ladisk.gpconnect",
+  "name": "GlobalProtect VPN",
+  "version": "0.1.0",
+  "author": "ladisk",
+  "license": "MIT",
+  "description": "Connect and disconnect a GlobalProtect VPN through gpconnect, and see when the tunnel actually carries traffic.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "GlobalProtect VPN",
+    "description": "VPN icon: dim when off, with a timer while the tunnel comes up, full when traffic flows. Click to connect or disconnect; right-click for the log.",
+    "category": "Info",
+    "aliases": [
+      "vpn",
+      "globalprotect",
+      "gpconnect"
+    ],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "portal": "",
+      "arguments": "--webview",
+      "command": "gpconnect"
+    },
+    "schema": [
+      {
+        "key": "portal",
+        "type": "string",
+        "label": "Portal",
+        "defaultValue": "",
+        "description": "The GlobalProtect portal address, e.g. vpn.example.org."
+      },
+      {
+        "key": "arguments",
+        "type": "string",
+        "label": "gpconnect arguments",
+        "defaultValue": "--webview",
+        "description": "Extra arguments for 'gpconnect connect', e.g. '--webview --remember'. openconnect options go after '--'."
+      },
+      {
+        "key": "command",
+        "type": "path",
+        "label": "gpconnect command",
+        "defaultValue": "gpconnect",
+        "description": "The gpconnect executable."
+      }
+    ]
+  }
+}

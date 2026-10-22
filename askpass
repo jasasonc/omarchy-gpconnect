@@ -1,0 +1,4 @@
+#!/bin/sh
+# SUDO_ASKPASS helper: sudo runs this when it has no terminal to ask on.
+# The password comes from the bar panel (see gpvpn.py _askpass).
+exec python3 "$(dirname "$(readlink -f "$0")")/gpvpn.py" _askpass "$@"
