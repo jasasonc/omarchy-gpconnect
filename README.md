@@ -28,8 +28,10 @@ Clicking the icon opens a panel with:
 - **Connect** / **Disconnect** and **Log** (the full output in a floating
   terminal).
 
-Keys in the panel: Enter connects or disconnects, `e` edits the portal, `l`
-opens the log, Esc closes. Esc in the root password field cancels the connection.
+Keys in the panel: `c` connects, `d` disconnects (or cancels a connection that
+is coming up), Enter does whichever applies, `e` edits the portal, `l` opens
+the log, Esc closes. A hint line at the bottom of the panel lists the keys
+that apply. Esc in the root password field cancels the connection.
 
 ## Setup
 

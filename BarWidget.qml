@@ -250,6 +250,8 @@ BarWidget {
       onTextKey: function(t) {
         if (t === "l" || t === "L") root.openLog()
         else if ((t === "e" || t === "E") && root.idle) root.editPortal()
+        else if ((t === "c" || t === "C") && root.idle) root.connect()
+        else if ((t === "d" || t === "D") && !root.idle) root.disconnect()
       }
 
       Column {
@@ -500,6 +502,7 @@ BarWidget {
           Button {
             text: root.idle ? "Connect" : root.phase === "ready" || root.phase === "reconnecting"
               ? "Disconnect" : root.phase === "password" ? "Unlock" : "Cancel"
+            tooltipText: root.idle ? "Connect (c, Enter)" : root.phase === "password" ? "" : "Disconnect (d, Enter)"
             bordered: true
             foreground: root.bar.foreground
             fontFamily: root.bar.fontFamily
@@ -530,6 +533,20 @@ BarWidget {
             verticalPadding: Style.spacing.controlPaddingY
             onClicked: root.openLog()
           }
+        }
+
+        // ---------- Key hints ----------
+        Text {
+          textFormat: Text.PlainText
+          width: parent.width
+          wrapMode: Text.WordWrap
+          // The portal editor shows its own hint.
+          visible: !root.editingPortal
+          text: root.phase === "password" ? "Enter unlock · Esc cancel"
+            : (root.idle ? "c connect · e edit portal" : "d disconnect") + " · l log · Esc close"
+          color: Qt.darker(root.bar.foreground, 1.5)
+          font.family: root.bar.fontFamily
+          font.pixelSize: Style.font.caption
         }
       }
     }
