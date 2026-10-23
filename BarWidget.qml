@@ -483,7 +483,11 @@ BarWidget {
 
             onTextChanged: if (text !== root.passwordText) root.passwordText = text
             onAccepted: root.submitPassword()
-            Keys.onEscapePressed: root.close()
+            // Esc gives up on the connection, so it ends as "off", not "failed".
+            Keys.onEscapePressed: {
+              root.disconnect()
+              root.close()
+            }
 
             onVisibleChanged: if (visible) Qt.callLater(forceActiveFocus)
           }

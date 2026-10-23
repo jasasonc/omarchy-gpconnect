@@ -29,7 +29,7 @@ Clicking the icon opens a panel with:
   terminal).
 
 Keys in the panel: Enter connects or disconnects, `e` edits the portal, `l`
-opens the log, Esc closes.
+opens the log, Esc closes. Esc in the root password field cancels the connection.
 
 ## Setup
 
